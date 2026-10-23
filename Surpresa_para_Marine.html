@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leia-Me Quando Precisar de Mim | Para Marine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (UI) & Playfair Display / Merriweather (Editorial Readability) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        serif: ['"Merriweather"', 'serif'],
+                    },
+                    colors: {
+                        warm: {
+                            50: '#fdfbf7',
+                            100: '#faf7f2',
+                            200: '#f2eae1',
+                            300: '#e5d7c5',
+                            800: '#4a3f35',
+                            900: '#2c241d'
+                        },
+                        bordeaux: {
+                            50: '#fdf4f5',
+                            100: '#fbe6e8',
+                            600: '#a33b49',
+                            700: '#852b37',
+                            800: '#681e28',
+                            900: '#481219'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf7f2;
+            color: #2c241d;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle paper background texture */
+        .paper-texture {
+            background-color: #faf7f2;
+            background-image: radial-gradient(#ebdcd0 0.6px, transparent 0.6px);
+            background-size: 24px 24px;
+        }
+
+        /* Reading letter content typography */
+        .letter-body {
+            font-family: 'Merriweather', serif;
+            line-height: 2.15;
+            letter-spacing: 0.01em;
+            color: #332a22;
+        }
+
+        /* Smooth page view transitions */
+        .page-view {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .page-hidden {
+            display: none !important;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        /* Minimal custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #faf7f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d8c3b0;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #852b37;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col justify-between paper-texture selection:bg-bordeaux-100 selection:text-bordeaux-900">
+
+    <!-- ========================================== -->
+    <!-- TELA 1: PÁGINA PRINCIPAL / CAPA DO LIVRO  -->
+    <!-- ========================================== -->
+    <div id="cover-page" class="page-view flex-1 flex flex-col justify-between items-center px-4 py-8 sm:py-16 max-w-3xl mx-auto w-full text-center min-h-screen">
+        
+        <!-- Header minimalista superior -->
+        <header class="w-full flex justify-between items-center text-xs text-warm-800/50 uppercase tracking-widest font-medium border-b border-warm-200/60 pb-4">
+            <span>Edição Especial</span>
+            <span>Para Marine ❤️</span>
+        </header>
+
+        <!-- Capa Editorial Principal -->
+        <main class="my-auto py-10 px-6 sm:px-12 bg-white/80 rounded-3xl border border-warm-200/90 shadow-sm max-w-xl w-full flex flex-col items-center relative overflow-hidden">
+            
+            <!-- Detalhe decorativo de borda interna -->
+            <div class="absolute inset-2 border border-warm-200/50 rounded-2xl pointer-events-none"></div>
+
+            <!-- Selo decorativo superior -->
+            <div class="w-12 h-12 rounded-full bg-bordeaux-50 border border-bordeaux-100 flex items-center justify-center text-bordeaux-700 font-display text-lg mb-6 shadow-xs">
+                📖
+            </div>
+
+            <!-- Título do Livro -->
+            <span class="text-xs uppercase tracking-[0.3em] font-semibold text-bordeaux-700 mb-2">Livro de Cartas</span>
+            <h1 class="font-display font-semibold text-2xl sm:text-4xl text-warm-900 tracking-tight leading-tight mb-4">
+                Leia-Me Quando Precisar de Mim
+            </h1>
+
+            <p class="text-sm sm:text-base font-serif italic text-warm-800/80 mb-6 max-w-md">
+                “Cartas e bilhetes para aquecer seu coração nos dias bons, acolher nos dias difíceis e te lembrar do quanto você é amada.”
+            </p>
+
+            <div class="w-12 h-0.5 bg-bordeaux-600/30 mb-6 rounded-full"></div>
+
+            <!-- Mensagem explicativa curta -->
+            <p class="text-xs sm:text-sm text-warm-800/70 leading-relaxed max-w-sm mb-8 font-light">
+                Escolha o momento ou sentimento que você está vivendo agora e abra a carta correspondente. Cada uma foi escrita com todo o afeto do meu coração para você.
+            </p>
+
+            <!-- Ações da Capa -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+                <button onclick="navigateToLetters()" class="w-full sm:w-auto px-8 py-3.5 bg-bordeaux-700 hover:bg-bordeaux-800 text-white font-medium text-sm rounded-full transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2">
+                    <span>Entrar no Livro de Cartas</span>
+                    <span class="text-xs">→</span>
+                </button>
+            </div>
+
+            <!-- Status rápido de progresso de leitura -->
+            <div class="mt-8 pt-4 border-t border-warm-200/60 w-full flex justify-center items-center gap-2 text-xs text-warm-800/60">
+                <span id="cover-read-count">0 de 25 cartas lidas</span>
+            </div>
+        </main>
+
+        <!-- Rodapé da Capa -->
+        <footer class="w-full text-center text-xs text-warm-800/40 font-light mt-6">
+            Sempre aqui por você, Marine.
+        </footer>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- TELA 2: ESTANTE / LISTA DE CARTAS          -->
+    <!-- ========================================== -->
+    <div id="letters-page" class="page-view page-hidden flex-1 flex flex-col justify-between w-full">
+        
+        <!-- HEADER EDITORIAL DA ESTANTE -->
+        <header class="border-b border-warm-200/80 bg-warm-50/90 backdrop-blur-sm sticky top-0 z-20 px-4 sm:px-8 py-4">
+            <div class="max-w-3xl mx-auto flex items-center justify-between">
+                <!-- Botão discreto para voltar à Capa -->
+                <button onclick="navigateToCover()" class="text-xs font-medium text-warm-800/70 hover:text-bordeaux-700 flex items-center gap-1.5 transition-colors cursor-pointer px-3 py-1.5 rounded-lg hover:bg-warm-200/40">
+                    <span>←</span>
+                    <span>Voltar à Capa</span>
+                </button>
+
+                <div class="text-center">
+                    <h2 class="font-display font-semibold text-base sm:text-lg text-warm-900">
+                        Cartas para Marine
+                    </h2>
+                    <span class="text-[11px] text-warm-800/50 block font-light">25 cartas escritas com carinho</span>
+                </div>
+
+                <div id="header-read-badge" class="text-[11px] font-medium text-bordeaux-700 bg-bordeaux-50 px-2.5 py-1 rounded-full border border-bordeaux-100">
+                    0 / 25
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT: LISTA DE CARTAS -->
+        <main class="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10">
+
+            <!-- INTRO DEDICATION CARD -->
+            <section class="mb-8 p-6 rounded-2xl bg-white/85 border border-warm-200/90 shadow-xs text-center relative">
+                <p class="font-serif italic text-xs sm:text-sm text-warm-800/90 leading-relaxed max-w-xl mx-auto">
+                    “Quando o dia parecer longo, quando o coração pedir abraço ou quando você apenas quiser um lembrete do meu amor, abra uma destas cartas.”
+                </p>
+            </section>
+
+            <!-- FILTROS E BUSCA -->
+            <section class="mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-1 bg-warm-200/50 p-1 rounded-xl w-full sm:w-auto">
+                    <button onclick="setFilter('all')" id="filter-all" class="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-xs font-medium bg-white text-warm-900 shadow-xs transition-all cursor-pointer">Todas (25)</button>
+                    <button onclick="setFilter('favorites')" id="filter-favorites" class="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-xs font-medium text-warm-800 hover:text-warm-900 transition-all cursor-pointer">Favoritas ❤️</button>
+                    <button onclick="setFilter('unread')" id="filter-unread" class="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-xs font-medium text-warm-800 hover:text-warm-900 transition-all cursor-pointer">Não Lidas 📩</button>
+                </div>
+
+                <div class="relative w-full sm:w-60">
+                    <input type="text" id="search-input" oninput="renderLetters()" placeholder="Buscar sentimento ou palavra..." class="w-full pl-8 pr-3 py-1.5 rounded-xl bg-white/90 border border-warm-200 text-xs text-warm-900 placeholder-warm-800/40 focus:outline-none focus:ring-1 focus:ring-bordeaux-600 transition-all">
+                    <span class="absolute left-2.5 top-2 text-xs text-warm-800/40">🔍</span>
+                </div>
+            </section>
+
+            <!-- GRID DE CARTAS -->
+            <section id="letters-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Dynamic letters rendering -->
+            </section>
+
+            <!-- STATE VAZIO -->
+            <div id="empty-state" class="hidden text-center py-12">
+                <span class="text-3xl mb-2 block opacity-60">📖</span>
+                <p class="text-warm-800/60 text-xs">Nenhuma carta encontrada para esta busca ou filtro.</p>
+            </div>
+
+        </main>
+
+        <!-- FOOTER DA ESTANTE -->
+        <footer class="border-t border-warm-200/80 py-5 text-center text-xs text-warm-800/50 font-light">
+            Com carinho e consideração, sempre ao seu lado. ❤️
+        </footer>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- MODAL DE LEITURA DA CARTA (ESTILO LIVRO)   -->
+    <!-- ========================================== -->
+    <div id="read-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-warm-900/35 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="read-modal-content" class="bg-[#fcfaf7] w-full max-w-2xl rounded-2xl shadow-xl border border-warm-200 p-6 sm:p-10 transform scale-95 transition-all duration-300 max-h-[88vh] flex flex-col relative">
+            
+            <!-- Modal Header -->
+            <div class="flex items-start justify-between pb-4 mb-4 border-b border-warm-200/80">
+                <div>
+                    <span id="read-modal-number" class="text-[10px] font-semibold uppercase tracking-widest text-bordeaux-700 bg-bordeaux-50 px-2.5 py-0.5 rounded-full inline-block mb-1.5 border border-bordeaux-100">Carta 1 de 25</span>
+                    <h2 id="read-modal-title" class="text-lg sm:text-xl font-display font-bold text-warm-900 leading-snug">Título da Carta</h2>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                    <button id="favorite-toggle-btn" onclick="toggleCurrentFavorite()" class="p-1.5 rounded-full hover:bg-warm-100 text-warm-800/60 hover:text-bordeaux-600 transition-colors cursor-pointer text-sm" title="Favoritar">
+                        🤍
+                    </button>
+                    <button onclick="closeReadModal()" class="w-7 h-7 rounded-full bg-warm-100 hover:bg-warm-200 text-warm-800 flex items-center justify-center transition-colors cursor-pointer text-xs" aria-label="Fechar">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body com Tipografia Editorial Merriweather -->
+            <div class="overflow-y-auto pr-2 my-2 flex-1">
+                <article id="read-modal-message" class="letter-body text-sm sm:text-base whitespace-pre-line">
+                    Conteúdo da carta...
+                </article>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-4 mt-2 border-t border-warm-200/80 flex justify-between items-center text-xs">
+                <span id="read-modal-status" class="text-warm-800/50 font-light">Lida com carinho ✨</span>
+                <button onclick="closeReadModal()" class="px-5 py-2 bg-bordeaux-700 hover:bg-bordeaux-800 text-white font-medium rounded-full transition-colors cursor-pointer shadow-xs">
+                    Fechar Carta
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT & LÓGICA DAS 25 CARTAS         -->
+    <!-- ========================================== -->
+    <script>
+        // COLEÇÃO COMPLETA DE 25 CARTAS PARA MARINE
+        const defaultLetters = [
+            {
+                id: "1",
+                num: 1,
+                title: "Abra quando estiver com saudades de mim",
+                subtitle: "Para diminuir a distância e aquecer o coração",
+                message: `Meu amor, Marine,\n\nSe você abriu esta carta, é porque a saudade apertou aí dentro. Queria tanto poder te puxar pelo braço agora mesmo e te dar aquele abraço demorado em que o mundo lá fora simplesmente para.\n\nQuero que saiba que, mesmo nos momentos em que não estamos juntos fisicamente, você está presente em meus pensamentos em quase todo instante. Lembro do seu sorriso, do tom suave da sua voz e da paz imediata que sinto quando estou ao seu lado.\n\nA distância é apenas um detalhe temporário, mas o afeto genuíno que construímos é permanente. Logo estaremos juntos de novo para colocar todos os abraços e conversas em dia.\n\nFeche os olhos por três segundos e sinta o meu beijo carinhoso na sua testa.\n\nCom todo o meu amor.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "2",
+                num: 2,
+                title: "Abra quando o dia tiver sido exaustivo",
+                subtitle: "Um convite para desacelerar e descansar a mente",
+                message: `Minha princesa,\n\nEu sei que existem dias em que as coisas parecem pesadas demais, o cansaço acumula e o mundo exige muito de você. Se hoje foi um desses dias, por favor, desacelere.\n\nVocê não precisa carregar tudo nas costas nem resolver todas as coisas de uma só vez. Você já fez o seu melhor hoje, e isso é mais do que suficiente.\n\nAgora, tome um banho bem relaxante, vista uma roupa confortável e prepare algo gostoso para beber. Permita-se descansar o corpo e a mente. Se quiser conversar, estou aqui. E se quiser apenas silêncio, eu seguro a sua mão.\n\nVocê é forte, mas também merece colo e descanso.\n\nUm abraço bem apertado.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "3",
+                num: 3,
+                title: "Abra quando estiver duvidando de si mesma",
+                subtitle: "Um lembrete sincero sobre a sua força e valor",
+                message: `Marine,\n\nÀs vezes, pensamentos de dúvida tentam nos convencer de que não somos capazes ou suficientes. Se você está se sentindo assim agora, por favor, pare por um instante e me escute.\n\nEu vejo em você uma mulher incrivelmente inteligente, talentosa e forte. Você já superou tantos momentos difíceis na vida, já aprendeu tanto e demonstrou uma resiliência admirável.\n\nNão deixe um momento de cansaço ou insegurança apagar o brilho do seu valor. Confie no seu caminho e na sua capacidade. Eu acredito em você de olhos fechados.\n\nVocê é incrível!`,
+                isFavorite: true,
+                isRead: false
+            },
+            {
+                id: "4",
+                num: 4,
+                title: "Abra quando precisar de um abraço bem apertado",
+                subtitle: "Sinta o aconchego do meu carinho em palavras",
+                message: `Meu bem,\n\nConsidere esta carta como o meu abraço mais sincero, demorado e quentinho embrulhado em palavras.\n\nSabe aquele abraço de acolhimento, onde você pode encostar a cabeça no meu peito, relaxar os ombros e respirar fundo? É exatamente esse abraço que estou te enviando agora.\n\nImagine minhas mãos nas suas costas te lembrando de que você é amada e protegida. Estou aqui com você.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "5",
+                num: 5,
+                title: "Abra quando acordar num dia frio ou chuvoso",
+                subtitle: "Para deixar sua manhã mais quentinha e acolhedora",
+                message: `Bom dia, meu amor,\n\nSe lá fora o dia está frio, cinzento ou com aquela chuva gostosa caindo na janela, que bom que você abriu esta carta.\n\nQueria estar aí agora para te cobrir até o pescoço, te abraçar por trás e ficar bem agarradinho com você sem pressa de levantar.\n\nQue você tenha um dia bem aconchegante. Prepare algo bem quentinho para tomar e sinta todo o meu carinho aquecendo a sua manhã.\n\nTe amo!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "6",
+                num: 6,
+                title: "Abra quando algo der muito certo e você quiser comemorar",
+                subtitle: "Celebrando suas vitórias com a maior alegria",
+                message: `Marine, minha campeã!\n\nSe você abriu esta carta porque conquistou algo novo, venceu um desafio ou recebeu uma notícia fantástica, PARABÉNS!\n\nEu tô pulando de alegria por você! Sei o quanto você se esforçou, estudou, se dedicou ou esperou por esse momento. Nada do que você conquista é por acaso; é fruto do seu merecimento.\n\nOrgulho de você não cabe no meu peito. Vamos comemorar muito juntos! Você merece o mundo!`,
+                isFavorite: true,
+                isRead: false
+            },
+            {
+                id: "7",
+                num: 7,
+                title: "Abra quando não conseguir dormir à noite",
+                subtitle: "Tranquilidade para desacelerar seus pensamentos",
+                message: `Meu amor,\n\nSe a noite chegou, o mundo silenciou e a sua mente continua agitada sem deixar o sono vir, respire bem fundo.\n\nO dia de hoje já acabou e todas as preocupações podem esperar por amanhã. Este momento da noite pertence unicamente ao seu descanso.\n\nSolte o ar devagar, ajeite o travesseiro e imagine que estou do seu lado fazendo um cafuné suave no seu cabelo até seus olhos pesarem.\n\nDescanse em paz. Dorma bem, minha linda.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "8",
+                num: 8,
+                title: "Abra quando estiver irritada com o mundo",
+                subtitle: "Um espaço seguro sem julgamentos para desabafar",
+                message: `Ei, Marine,\n\nSe alguma coisa ou alguém te tirou do sério hoje e você está com raiva ou chateada, tá tudo bem sentir isso.\n\nVocê não precisa ser paciente ou perfeita o tempo todo. A frustração faz parte. Pode desabafar, reclamar e soltar o que está entalado.\n\nLembre-se apenas de não guardar esse peso no coração por muito tempo. Respire fundo, tome uma água gelada e saiba que eu estou do seu lado para te ouvir e te apoiar sempre.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "9",
+                num: 9,
+                title: "Abra quando sentir que precisa de um elogio sincero",
+                subtitle: "Tudo o que admiro profundamente em você",
+                message: `Marine,\n\nSe você veio até aqui precisando ouvir algo bonito, deixa eu te falar com toda a sinceridade do meu coração:\n\nVocê é uma mulher fascinante. Tem um olhar doce, uma risada que ilumina qualquer lugar e uma sensibilidade rara de encontrar nas pessoas.\n\nSua inteligência me encanta, sua bondade me inspira e a sua presença faz tudo ao redor ficar mais bonito. Você é uma raridade!\n\nNunca se esqueça disso.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "10",
+                num: 10,
+                title: "Abra quando nós tivermos uma pequena discussão",
+                subtitle: "Porque o nosso amor é infinitamente maior do que qualquer desentendimento",
+                message: `Meu bem,\n\nSe nós dois nos desentendemos por algum motivo, por favor escute o que vou te dizer:\n\nNenhum desacordo muda o amor imenso que sinto por você. Às vezes erramos na forma de falar ou na impaciência, mas a minha intenção com você é sempre o afeto e o cuidado.\n\nNão quero ter razão, quero estar bem com você. Vamos conversar com calma, pedir desculpas se necessário e nos abraçar logo de novo.\n\nEu te amo muito e amo a gente.`,
+                isFavorite: true,
+                isRead: false
+            },
+            {
+                id: "11",
+                num: 11,
+                title: "Abra quando estiver se sentindo insegura",
+                subtitle: "Para lembrar que você é única e admirável",
+                message: `Marine,\n\nSe em algum momento você olhou para si mesma com dúvida ou incerteza, pare por um segundo.\n\nVocê não precisa se comparar a ninguém. A sua essência é única, sua história tem valor e sua beleza — por dentro e por fora — é indiscutível.\n\nEu te vejo por inteiro e amo cada detalhe seu, exatamente como você é. Acolha-se com o mesmo carinho com que acolhe os outros.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "12",
+                num: 12,
+                title: "Abra quando precisar tomar uma decisão difícil",
+                subtitle: "Confie na sua intuição e sabedoria",
+                message: `Minha querida,\n\nTomar decisões importantes traz um frio na barriga inevitável, mas quero te lembrar da mulher sábia e consciente que você é.\n\nEscreva os prós e contras se ajudar, mas acima de tudo escute a sua intuição. Ela costuma saber o caminho correto.\n\nQualquer que seja a sua escolha, eu estarei ao seu lado para te apoiar em cada etapa. Confie no seu discernimento!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "13",
+                num: 13,
+                title: "Abra quando estiver com preguiça de encarar o dia",
+                subtitle: "Aquele empurrãozinho leve para a manhã começar",
+                message: `Ei, preguiçosa!\n\nEu sei que a cama tá uma delícia e que a vontade de passar o dia debaixo das cobertas é grande.\n\nMas ó: um passo de cada vez. Levanta devagar, toma aquele café gostoso, lava o rosto com água fresca e vai no seu ritmo.\n\nO dia hoje tem coisas boas preparadas para você. Um beijo carinhoso para te dar coragem!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "14",
+                num: 14,
+                title: "Abra quando sentir que ninguém te entende",
+                subtitle: "Sempre haverá em mim um ouvinte atento para você",
+                message: `Marine,\n\nSe hoje você sentiu que as pessoas ao redor não compreenderam seu ponto de vista ou seus sentimentos, não se isole.\n\nComigo você não precisa de filtros ou máscaras. Pode falar sobre suas dúvidas, medos ou ideias mais malucas sem receio de julgamentos.\n\nEu me importo genuinamente com o que se passa na sua mente. Estou aqui para te ouvir de coração aberto.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "15",
+                num: 15,
+                title: "Abra quando se lembrar do nosso primeiro momento marcante",
+                subtitle: "Revisitando a magia do nosso início",
+                message: `Meu amor,\n\nÉ tão especial olhar para trás e lembrar de quando tudo começou entre nós.\n\nLembro do friozinho na barriga, dos olhares de curiosidade, das risadas soltas e da certeza imediata de que você era alguém extremamente diferente de tudo o que eu já tinha conhecido.\n\nAquele momento foi o primeiro passo de uma história incrível que continuamos escrevendo dia a dia. Que sorte a minha ter te encontrado!`,
+                isFavorite: true,
+                isRead: false
+            },
+            {
+                id: "16",
+                num: 16,
+                title: "Abra quando não estiver se sentindo bem fisicamente",
+                subtitle: "Carinho e atenção para quando você está doentinha",
+                message: `Minha dengo,\n\nSe você está sem energia, caidinha ou doentinha hoje, queria muito estar aí do seu lado para te mimar.\n\nQueria te fazer um chá quentinho, arrumar seu travesseiro e garantir que você fique quietinha descansando.\n\nTome seus remédios, descanse bastante e não se exija nada hoje. O corpo precisa desse tempo para se recuperar. Logo você estará forte e radiante de novo!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "17",
+                num: 17,
+                title: "Abra quando quiser ouvir o quanto você é linda",
+                subtitle: "Sobre a beleza encantadora que você carrega",
+                message: `Marine,\n\nCaso ninguém tenha te dito isso hoje, deixa eu deixar bem claro:\n\nVocê é verdadeiramente linda. Não só pelos seus traços delicados, pelo seu sorriso espontâneo ou pelos seus olhos carinhosos, mas pela elegância leve com que você caminha no mundo.\n\nSua beleza é daquelas que encantam sem fazer esforço. Sou um verdadeiro sortudo por ter você por perto.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "18",
+                num: 18,
+                title: "Abra quando estiver com vontade de rir",
+                subtitle: "Para trazer leveza e alegria ao seu momento",
+                message: `Marine,\n\nSe você abriu esta carta querendo um motivo para dar risada, lembre-se de alguma das nossas trapalhadas juntos ou de algum comentário aleatório que fez a gente rir até a barriga doer!\n\nSua risada é uma das minhas mídias sonoras favoritas no mundo todo. Que seu dia tenha pelo menos uma gargalhada solta e sincera!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "19",
+                num: 19,
+                title: "Abra quando precisar de um empurrãozinho de coragem",
+                subtitle: "Vença os medos com a certeza do seu potencial",
+                message: `Minha querida,\n\nTer medo ou frio na barriga antes de dar um passo importante é normal. O que importa é não deixar esse medo congelar seus passos.\n\nRespire fundo, erga a cabeça e vá em frente. Você é muito mais capacitada do que imagina e tem todas as ferramentas necessárias dentro de si.\n\nEu acredito plenamente no seu sucesso!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "20",
+                num: 20,
+                title: "Abra quando sentir saudades da minha voz ou do meu carinho",
+                subtitle: "Uma mensagem quase audível de afeto",
+                message: `Meu bem,\n\nSe você veio até aqui procurando a minha voz ou meu dengo, imagine que estou baixinho no seu ouvido dizendo: "Vai dar tudo certo, meu amor, eu tô aqui com você".\n\nSinta meu toque suave no seu rosto e o carinho sincero que dedico a você todos os dias. Logo a gente se encontra para matar toda essa vontade de estar perto!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "21",
+                num: 21,
+                title: "Abra quando estiver planejando o nosso futuro",
+                subtitle: "Caminhos e sonhos lado a lado",
+                message: `Marine,\n\nSempre que penso nos anos que virão, um sorriso enorme se forma no meu rosto ao saber que você está em cada plano.\n\nPenso nas viagens que faremos, nas conquistas que comemoraremos e nos dias simples que viveremos lado a lado.\n\nConstruir um caminho com você é uma das decisões mais bonitas da minha vida. Nosso futuro será incrível!`,
+                isFavorite: true,
+                isRead: false
+            },
+            {
+                id: "22",
+                num: 22,
+                title: "Abra numa manhã ensolarada de domingo",
+                subtitle: "Para saborear a paz e a calma do fim de semana",
+                message: `Bom dia de domingo, Marine!\n\nQue a luz bonita da manhã de hoje te traga uma sensação gostosa de paz e descanso.\n\nAproveite esse dia sem correria: tome um café calmo, leia algo agradável, sinta o sol e cuide de você.\n\nDesejo que seu domingo seja leve e revigorante!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "23",
+                num: 23,
+                title: "Abra quando achar que o tempo está passando rápido demais",
+                subtitle: "Saber valorizar o presente e cada instante",
+                message: `Meu amor,\n\nÀs vezes os dias voam e temos a impressão de que o tempo escorre pelas mãos. Nessas horas, o segredo é estar presente no 'agora'.\n\nNão se preocupe em controlar o tempo. Apenas viva intensamente cada conversa, cada café e cada momento simples.\n\nO que vivemos com amor fica eternizado em nós.`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "24",
+                num: 24,
+                title: "Abra num dia totalmente comum em que só queira carinho",
+                subtitle: "Porque dias normais também merecem amor",
+                message: `Ei, Marine,\n\nHoje pode não ser uma data especial nem um dia com acontecimentos extraordinários, mas todo dia é dia de te lembrar o quanto você é querida.\n\nPassando só para mandar um carinho aleatório no meio da sua rotina e dizer que pensei em você com muito afeto.\n\nUm beijo bem doce no seu coração!`,
+                isFavorite: false,
+                isRead: false
+            },
+            {
+                id: "25",
+                num: 25,
+                title: "Abra quando apenas quiser lembrar o quanto eu amo você",
+                subtitle: "A declaração mais pura e eterna para a Marine",
+                message: `Marine, minha linda,\n\nSe você abriu esta última carta só para ter certeza absoluta do meu sentimento, leia com atenção:\n\nEu amo você. Amo de forma sincera, serena e profunda. Amo quem você é, a parceria que temos e o bem imenso que você traz para a minha vida.\n\nEm qualquer dia, em qualquer momento ou situação, saiba que meu carinho por você é um porto seguro e permanente.\n\nObrigado por ser a minha pessoa favorita. Te amo hoje e sempre!`,
+                isFavorite: true,
+                isRead: false
+            }
+        ];
+
+        // ESTADO DA APLICAÇÃO
+        let letters = [];
+        let activeFilter = 'all';
+        let currentLetterId = null;
+
+        // PERSISTÊNCIA EM LOCAL STORAGE
+        function loadLetters() {
+            const saved = localStorage.getItem('marine_letters_book_v4');
+            if (saved) {
+                try {
+                    letters = JSON.parse(saved);
+                    if (letters.length < defaultLetters.length) {
+                        letters = [...defaultLetters];
+                        saveLettersToStorage();
+                    }
+                } catch (e) {
+                    letters = [...defaultLetters];
+                }
+            } else {
+                letters = [...defaultLetters];
+                saveLettersToStorage();
+            }
+            updateReadCounts();
+        }
+
+        function saveLettersToStorage() {
+            localStorage.setItem('marine_letters_book_v4', JSON.stringify(letters));
+            updateReadCounts();
+        }
+
+        function updateReadCounts() {
+            const readCount = letters.filter(l => l.isRead).length;
+            const total = letters.length;
+            
+            const coverCountEl = document.getElementById('cover-read-count');
+            const headerBadgeEl = document.getElementById('header-read-badge');
+
+            if (coverCountEl) {
+                coverCountEl.innerText = `${readCount} de ${total} cartas lidas`;
+            }
+            if (headerBadgeEl) {
+                headerBadgeEl.innerText = `${readCount} / ${total}`;
+            }
+        }
+
+        // NAVEGAÇÃO DE PÁGINAS (CAPA VS ESTANTE)
+        function navigateToLetters() {
+            const coverPage = document.getElementById('cover-page');
+            const lettersPage = document.getElementById('letters-page');
+
+            coverPage.classList.add('page-hidden');
+            lettersPage.classList.remove('page-hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateToCover() {
+            const coverPage = document.getElementById('cover-page');
+            const lettersPage = document.getElementById('letters-page');
+
+            lettersPage.classList.add('page-hidden');
+            coverPage.classList.remove('page-hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // RENDERIZAR CARTAS
+        function renderLetters() {
+            const grid = document.getElementById('letters-grid');
+            const emptyState = document.getElementById('empty-state');
+            const searchInput = document.getElementById('search-input').value.toLowerCase().trim();
+
+            grid.innerHTML = '';
+
+            let filtered = letters.filter(letter => {
+                if (activeFilter === 'favorites' && !letter.isFavorite) return false;
+                if (activeFilter === 'unread' && letter.isRead) return false;
+                
+                if (searchInput) {
+                    const titleMatch = letter.title.toLowerCase().includes(searchInput);
+                    const subMatch = (letter.subtitle || '').toLowerCase().includes(searchInput);
+                    const msgMatch = letter.message.toLowerCase().includes(searchInput);
+                    return titleMatch || subMatch || msgMatch;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filtered.forEach(letter => {
+                const card = document.createElement('div');
+                card.className = `group bg-white rounded-2xl p-5 border ${letter.isRead ? 'border-warm-200/60 bg-white/70' : 'border-warm-200 shadow-xs'} hover:border-bordeaux-600/40 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between relative`;
+                card.onclick = () => openReadModal(letter.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2.5">
+                            <span class="text-[10px] font-semibold tracking-wider uppercase text-bordeaux-700 bg-bordeaux-50 px-2 py-0.5 rounded-md border border-bordeaux-100/50">
+                                Carta ${letter.num}
+                            </span>
+                            <div class="flex items-center gap-2">
+                                ${letter.isRead ? '<span class="text-[11px] text-warm-800/40">Lida</span>' : '<span class="w-2 h-2 rounded-full bg-bordeaux-600"></span>'}
+                                <button onclick="event.stopPropagation(); toggleFavorite('${letter.id}')" class="text-xs p-1 hover:scale-110 transition-transform">
+                                    ${letter.isFavorite ? '❤️' : '🤍'}
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="font-display font-semibold text-warm-900 text-base mb-1.5 leading-snug group-hover:text-bordeaux-700 transition-colors">
+                            ${letter.title}
+                        </h3>
+                        <p class="text-xs text-warm-800/70 leading-relaxed line-clamp-2">
+                            ${letter.subtitle || letter.message.substring(0, 75) + '...'}
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-warm-100 flex items-center justify-between text-xs text-warm-800/50">
+                        <span class="group-hover:text-warm-900 transition-colors">Ler carta</span>
+                        <span class="text-bordeaux-700 font-medium group-hover:translate-x-0.5 transition-transform">Abrir →</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // CONTROLE DE FILTROS
+        function setFilter(filter) {
+            activeFilter = filter;
+            ['all', 'favorites', 'unread'].forEach(f => {
+                const btn = document.getElementById(`filter-${f}`);
+                if (f === filter) {
+                    btn.className = "flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-xs font-medium bg-white text-warm-900 shadow-xs transition-all cursor-pointer";
+                } else {
+                    btn.className = "flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-xs font-medium text-warm-800 hover:text-warm-900 transition-all cursor-pointer";
+                }
+            });
+            renderLetters();
+        }
+
+        // GERENCIAMENTO DE FAVORITOS
+        function toggleFavorite(id) {
+            const letter = letters.find(l => l.id === id);
+            if (letter) {
+                letter.isFavorite = !letter.isFavorite;
+                saveLettersToStorage();
+                renderLetters();
+                if (currentLetterId === id) {
+                    updateFavoriteBtn();
+                }
+            }
+        }
+
+        function toggleCurrentFavorite() {
+            if (currentLetterId) {
+                toggleFavorite(currentLetterId);
+            }
+        }
+
+        function updateFavoriteBtn() {
+            const letter = letters.find(l => l.id === currentLetterId);
+            const btn = document.getElementById('favorite-toggle-btn');
+            if (letter && btn) {
+                btn.innerHTML = letter.isFavorite ? '❤️' : '🤍';
+            }
+        }
+
+        // LÓGICA DO MODAL DE LEITURA
+        function openReadModal(id) {
+            const letter = letters.find(l => l.id === id);
+            if (!letter) return;
+
+            currentLetterId = id;
+            letter.isRead = true;
+            saveLettersToStorage();
+            renderLetters();
+
+            document.getElementById('read-modal-number').innerText = `Carta ${letter.num} de 25`;
+            document.getElementById('read-modal-title').innerText = letter.title;
+            document.getElementById('read-modal-message').innerText = letter.message;
+
+            updateFavoriteBtn();
+
+            const modal = document.getElementById('read-modal');
+            const content = document.getElementById('read-modal-content');
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeReadModal() {
+            const modal = document.getElementById('read-modal');
+            const content = document.getElementById('read-modal-content');
+
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('pointer-events-none');
+                currentLetterId = null;
+            }, 250);
+        }
+
+        // INICIALIZAÇÃO DA APLICAÇÃO
+        window.onload = function() {
+            loadLetters();
+            renderLetters();
+        };
+    </script>
+</body>
+</html>
